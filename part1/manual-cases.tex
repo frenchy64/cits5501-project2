@@ -9,9 +9,13 @@
 % Prerequisites/assumptions
 % Test Data (variables, fields etc.)
 
-\section{Created User is in the User List}
+\section{Document Description}
 
-\emph{Positive Test}
+This document describes some manually generated test cases.
+They are concentrated on data entry validation and verification,
+as reflected by the DE prefix for the test case identifier.
+
+\section*{DE1 - Successfully Create User}
 
 \subsection*{Prerequisites}
 
@@ -71,13 +75,32 @@
   \item Fill form with the minimum amount of data: username, newpassword,
     firstname, email, city and country.
   \item Click Create User button.
-  \item Click Log out button.
-  \item Click Login button.
-  \item Enter new username and newpassword credentials.
-  \item Click Login button.
-  \item Verify login was successful.
 \end{itemize}
 
-\section{Create User Fails}
+\section{Create User missing surname}
+
+% lowercase username
+
+\section*{DE2 - Username must be lowercase}
+
+\subsection*{Prerequisites}
+
+As DE1.
+
+\subsection*{Test Data}
+
+\begin{itemize}
+  \item Invalid username
+  \item Valid newpassword
+  \item Valid firstname
+  \item Valid email
+  \item Valid city
+  \item Valid country
+\end{itemize}
+
+\subsection*{Steps to carry out the test}
+
+As DE1, but also verify that an appropriate error message
+was displayed about lowercase usernames.
 
 \end{document}

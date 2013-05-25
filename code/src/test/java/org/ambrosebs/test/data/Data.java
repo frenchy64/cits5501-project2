@@ -26,7 +26,7 @@ public class Data {
      * Tree Links
      */ 
     // Administration tree
-    public static final String treeSiteAdmin = "Site Administration";
+    public static final String treeSiteAdmin = "Site administration";
     public static final String treeUsers = "Users";
     public static final String treeAccounts = "Accounts";
     public static final String treeAddNewUser = "Add a new user";

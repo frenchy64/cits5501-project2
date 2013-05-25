@@ -1,5 +1,6 @@
 package org.ambrosebs.test.util;
 
+import java.util.concurrent.TimeUnit;
 import org.ambrosebs.test.data.Data;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -28,12 +29,14 @@ public class User {
      * @param pw 
      */
     public void loginWithCredentials(String user, String pw) {
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         final WebElement loginLink = driver.findElement(By.partialLinkText(Data.loginLinkText));
         loginLink.click();
         final WebElement usernameTextbox = driver.findElement(By.id("username"));
         usernameTextbox.sendKeys(user);
         final WebElement pwTextbox = driver.findElement(By.id("password"));
         pwTextbox.sendKeys(pw);
+        driver.findElement(By.id("loginbtn")).click();
     }
 
     /**
@@ -42,7 +45,7 @@ public class User {
      * @param w 
      */
     public void loginAsAdmin() {
-        loginWithCredentials(Data.adminUser, Data.adminUser);
+        loginWithCredentials(Data.adminUser, Data.adminPw);
     }
     
     /**

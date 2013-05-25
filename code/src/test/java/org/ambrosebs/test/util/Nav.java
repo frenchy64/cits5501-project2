@@ -1,7 +1,7 @@
 package org.ambrosebs.test.util;
 
 import org.ambrosebs.test.data.Data;
-import java.util.NoSuchElementException;
+import org.openqa.selenium.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -28,11 +28,13 @@ public class Nav {
      * i.e. if 'Add New User' option is available then click it, if not then navigate through the tree to find it.
      */
     public void navigateTreeMenuToAddNewUserPage() {
-        navigateTree4DeepByXpath(
-                ".//span[contains(.,'" + Data.treeSiteAdmin + "')]",
-                ".//li[contains(.,'" + Data.treeSiteAdmin + "')]/ul//span[contains(.,'" + Data.treeUsers + "')]",
-                ".//li[contains(.,'" + Data.treeSiteAdmin + "')]/ul//span[contains(.,'" + Data.treeAccounts + "')]",
-                "//a[@title='" + Data.treeAddNewUser + "']");
+        //FIXME
+        driver.get("http://localhost/moodle/user/editadvanced.php?id=-1");
+//        navigateTree4DeepByXpath(
+//                ".//span[contains(.,'" + Data.treeSiteAdmin + "')]",
+//                ".//li[contains(.,'" + Data.treeSiteAdmin + "')]/ul//span[contains(.,'" + Data.treeUsers + "')]",
+//                ".//li[contains(.,'" + Data.treeSiteAdmin + "')]/ul//span[contains(.,'" + Data.treeAccounts + "')]",
+//                "//a[@title='" + Data.treeAddNewUser + "']");
     }
 
     /**
@@ -55,6 +57,8 @@ public class Nav {
             itemVisible = e.isDisplayed();
         } catch (NoSuchElementException ex) {
         }
+        System.out.println("visible?"+ itemVisible);
+        System.out.flush();
         if (itemVisible) {
             WebElement level4Element = driver.findElement(By.xpath(level4));
             level4Element.click();
