@@ -1,0 +1,83 @@
+\documentclass{article}
+
+\title{Manual Specification of Test Cases}
+
+\begin{document}
+
+\maketitle
+
+% Prerequisites/assumptions
+% Test Data (variables, fields etc.)
+
+\section{Created User is in the User List}
+
+\emph{Positive Test}
+
+\subsection*{Prerequisites}
+
+\begin{itemize}
+  \item Logged in as the main administrator
+  \item Currently at the Moodle home page
+\end{itemize}
+
+\subsection*{Test Data}
+
+\begin{itemize}
+  \item Valid username
+  \item Valid newpassword
+  \item Valid firstname
+  \item Valid email
+  \item Valid city
+  \item Valid country
+\end{itemize}
+
+\subsection*{Steps to carry out the test}
+
+\begin{itemize}
+  \item Click the button ``Add a new user'' under the User and then
+    the Account categories.
+  \item Fill form with the minimum amount of data: username, newpassword,
+    firstname, email, city and country.
+  \item Click Create User button.
+  \item Click ``Browse list of users'' button.
+  \item Verify that user appears in list.
+\end{itemize}
+
+\section{Created User can be used to log in}
+
+\subsection*{Prerequisites}
+
+\begin{itemize}
+  \item Logged in as the main administrator
+  \item Currently at the Moodle home page
+\end{itemize}
+
+\subsection*{Test Data}
+
+\begin{itemize}
+  \item Valid username
+  \item Valid newpassword
+  \item Valid firstname
+  \item Valid email
+  \item Valid city
+  \item Valid country
+\end{itemize}
+
+\subsection*{Steps to carry out the test}
+
+\begin{itemize}
+  \item Click the button ``Add a new user'' under the User and then
+    the Account categories.
+  \item Fill form with the minimum amount of data: username, newpassword,
+    firstname, email, city and country.
+  \item Click Create User button.
+  \item Click Log out button.
+  \item Click Login button.
+  \item Enter new username and newpassword credentials.
+  \item Click Login button.
+  \item Verify login was successful.
+\end{itemize}
+
+\section{Create User Fails}
+
+\end{document}
