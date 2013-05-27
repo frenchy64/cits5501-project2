@@ -31,4 +31,8 @@ public class Data {
     public static final String treeAccounts = "Accounts";
     public static final String treeAddNewUser = "Add a new user";
     
+    public static final String treeProfileSettings = "My profile settings";
+    public static final String treeEditProfile = "Edit profile";
+    public static final String treeChangePassword = "Change password";
+    
 }

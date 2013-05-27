@@ -28,6 +28,16 @@
             <version>1.5.1</version>
         </dependency>
         <dependency>
+            <groupId>org.clojure</groupId>
+            <artifactId>core.typed</artifactId>
+            <version>0.1.15</version>
+        </dependency>
+        <dependency>
+            <groupId>org.clojure</groupId>
+            <artifactId>tools.trace</artifactId>
+            <version>0.7.5</version>
+        </dependency>
+        <dependency>
           <groupId>net.mikera</groupId>
           <artifactId>clojure-utils</artifactId>
           <version>0.2.2</version>
@@ -49,7 +59,6 @@
         </dependencies>
     </dependencyManagement>
     <build>
-          <sourceDirectory>${basedir}/src/main/clojure</sourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -64,8 +73,23 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <configuration>
           <includes>
-            <include>org/ambrosebs/test/DE1AddUserTest.java</include>
+            <include>org/ambrosebs/test/addUserPage/DENUS1AddUserTest.java</include>
+            <include>org/ambrosebs/test/addUserPage/DENUF2BadUsernameTest.java</include>
+            <include>org/ambrosebs/test/addUserPage/DENUF3aBadPasswordTest.java</include>
+            <include>org/ambrosebs/test/addUserPage/DENUF3bBadPasswordTest.java</include>
+            <include>org/ambrosebs/test/addUserPage/DENUF3cBadPasswordTest.java</include>
+            <include>org/ambrosebs/test/addUserPage/DENUF4BadEmailTest.java</include>
+            <include>org/ambrosebs/test/addUserPage/DENUF5MissingUsernameTest.java</include>
+            <include>org/ambrosebs/test/addUserPage/DENUF6MissingPasswordTest.java</include>
+            <include>org/ambrosebs/test/addUserPage/DENUF7MissingFirstnameTest.java</include>
+            <include>org/ambrosebs/test/addUserPage/DENUF8MissingSurnameTest.java</include>
+            <include>org/ambrosebs/test/addUserPage/DENUF9MissingEmailTest.java</include>
+            <include>org/ambrosebs/test/addUserPage/DENUF10MissingCityTest.java</include>
+            <include>org/ambrosebs/test/addUserPage/DENUF11MissingCountryTest.java</include>
           </includes>
+          <additionalClasspathElements>
+              <additionalClasspathElement>src/main/clojure</additionalClasspathElement>
+          </additionalClasspathElements>
         </configuration>
       </plugin>
     </plugins>

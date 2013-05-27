@@ -7,6 +7,7 @@ package org.ambrosebs.test.util;
 import clojure.lang.Symbol;
 import clojure.lang.Var;
 import mikera.cljutils.Clojure;
+import clojure.lang.Util;
 
 /**
  *
@@ -22,22 +23,26 @@ public class AssertionsParent {
         Clojure.require(utilcljNstr);
     }
     
+    public AssertionsParent() {
+        
+    }
+    
     public Var varFrom(String name) {
-        return Var.find(Symbol.intern(name));
+        Var v = Var.find(Symbol.intern(name));
+        if (v == null)
+            throw Util.sneakyThrow(new Exception("Var "+name+" is nil"));
+        return v;
     }
     
     public Var utilVar(String name) {
         return varFrom(utilcljNstr+"/"+name);
     }
     
-    final Var MAP = Clojure.var("map");
-    final Var SET = Clojure.var("set");
-    final Var PRINTLN = Clojure.var("println");
-    final Var PRN = Clojure.var("prn");
-    final Var MAPCAT = Clojure.var("mapcat");
-    final Var SPLIT_LINES = varFrom("clojure.string/split-lines");
-    final Var SET_DIFFERENCE = varFrom("clojure.set/difference");
+    public Var coreVar(String name) {
+        return varFrom("clojure.core/"+name);
+    }
     
     final Var ASSERT_ALL_ERRORS_APPEAR = utilVar("assert-all-errors-appear");
+    final Var ASSERT_FORBIDDEN_ERRORS = utilVar("assert-forbidden-errors");
     
 }

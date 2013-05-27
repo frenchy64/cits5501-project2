@@ -2,16 +2,19 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.ambrosebs.test;
+package org.ambrosebs.test.addUserPage;
 
+import junit.framework.Assert;
+import org.ambrosebs.test.TestParent;
 import org.ambrosebs.test.data.AddUserData;
 import org.junit.Test;
+import org.openqa.selenium.By;
 
 /**
  *
  * @author ambrose
  */
-public class DE1AddUserTest extends TestParent {
+public class DENUS1AddUserTest extends TestParent {
     
     
     @Test
@@ -20,7 +23,7 @@ public class DE1AddUserTest extends TestParent {
     }
     
     /**
-     * Add a new user and verify it shows in the user page.
+     * Add a new user and verify no errors are shown.
      */
     @Test
     public void addUser() {
@@ -34,8 +37,8 @@ public class DE1AddUserTest extends TestParent {
         addNewUser.enterCity(AddUserData.user1City);
         addNewUser.enterCountry(AddUserData.user1Country);
         addNewUser.clickSubmitButton();
-        
-        
+
+        Assert.assertTrue(driver.findElements(By.className("errors")).isEmpty());
     }
 
 }

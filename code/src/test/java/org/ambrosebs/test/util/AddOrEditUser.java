@@ -13,11 +13,11 @@ import org.openqa.selenium.support.ui.Select;
  *
  * @author ambrose
  */
-public class AddNewUser {
+public class AddOrEditUser {
     
     final WebDriver driver;
     
-    public AddNewUser(WebDriver driver) {
+    public AddOrEditUser(WebDriver driver) {
         this.driver = driver;
     }
     
@@ -28,6 +28,7 @@ public class AddNewUser {
     public void enterUserName(String username) {
         final WebElement usernameBox
                 = driver.findElement(By.id("id_username"));
+        usernameBox.clear();
         usernameBox.sendKeys(username);
     }
     
@@ -39,30 +40,35 @@ public class AddNewUser {
     public void enterPw(String pw) {
         final WebElement pwBox
                 = driver.findElement(By.cssSelector("#id_newpassword"));
+        pwBox.clear();
         pwBox.sendKeys(pw);
     }
 
     public void enterFirstname(String firstname) {
         final WebElement firstnameBox
                 = driver.findElement(By.cssSelector("#id_firstname"));
+        firstnameBox.clear();
         firstnameBox.sendKeys(firstname);
     }
 
     public void enterSurname(String surname) {
         final WebElement surnameBox
                 = driver.findElement(By.cssSelector("#id_lastname"));
+        surnameBox.clear();
         surnameBox.sendKeys(surname);
     }
 
     public void enterEmail(String email) {
         final WebElement emailBox
                 = driver.findElement(By.cssSelector("#id_email"));
+        emailBox.clear();
         emailBox.sendKeys(email);
     }
 
     public void enterCity(String city) {
         final WebElement cityBox
                 = driver.findElement(By.cssSelector("#id_city"));
+        cityBox.clear();
         cityBox.sendKeys(city);
     }
     
@@ -79,7 +85,39 @@ public class AddNewUser {
         final WebElement submitButton
                 = driver.findElement(By.id("id_submitbutton"));
         submitButton.click();
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);	
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
-     
+    
+    /**
+     * Fill the original password box in the Change password page.
+     * @param originalPw 
+     */
+    public void editPasswordAddOriginalPassword(String originalPw) {
+        final WebElement originalPwBox
+                = driver.findElement(By.id("id_password"));
+        originalPwBox.clear();
+        originalPwBox.sendKeys(originalPw);
+    }
+    
+    /**
+     * Fill the "first time" new password box in the Change password page.
+     * @param newPw 
+     */
+    public void editPasswordAddNewPasswordFirstTime(String newPw) {
+        final WebElement newPwBox
+                = driver.findElement(By.id("id_newpassword1"));
+        newPwBox.clear();
+        newPwBox.sendKeys(newPw);
+    }
+    
+    /**
+     * Fill the "second time" new password box in the Change password page.
+     * @param newPw 
+     */
+    public void editPasswordAddNewPasswordSecondTime(String newPw) {
+        final WebElement newPwBox
+                = driver.findElement(By.id("id_newpassword2"));
+        newPwBox.clear();
+        newPwBox.sendKeys(newPw);
+    }
 }

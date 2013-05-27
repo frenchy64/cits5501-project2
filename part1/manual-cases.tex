@@ -9,13 +9,42 @@
 % Prerequisites/assumptions
 % Test Data (variables, fields etc.)
 
+\tableofcontents
+
 \section{Document Description}
 
-This document describes some manually generated test cases.
-They are concentrated on data entry validation and verification,
-as reflected by the DE prefix for the test case identifier.
+This document describes some manually generated test cases for testing
+Moodle.
 
-\section*{DE1 - Successfully Create User}
+I have concentrated on these pages:
+
+\begin{itemize}
+  \item Add new user page
+  \item Edit user profile page
+  \item Edit password page
+\end{itemize}
+
+Tests that validate data entry conditions are the main theme in this document.
+
+\section{Test Cases}
+
+\subsection{A note on test identifiers}
+
+Test identifiers are organised as follows:
+
+\begin{description}
+  \item[DENU] Data entry (for) new user page
+  \item[DEEU] Data entry (for) edit user page
+\end{description}
+
+Identifiers end with \emph{S} for success cases or \emph{F} for
+failure cases.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% TEST NEW USER PAGE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{DENUS1 - Adding a user succeeds}
 
 \subsection*{Prerequisites}
 
@@ -43,64 +72,339 @@ as reflected by the DE prefix for the test case identifier.
   \item Fill form with the minimum amount of data: username, newpassword,
     firstname, email, city and country.
   \item Click Create User button.
-  \item Click ``Browse list of users'' button.
-  \item Verify that user appears in list.
+  \item Verify that no errors appear on the page.
 \end{itemize}
 
-\section{Created User can be used to log in}
+\section*{DENUF2 - Username must be valid}
+
+Same as DENUS1, except an invalid username is provided.
+
+
+Verify that the correct error has been printed.
+
+\section*{DENUF3a - Password must be valid}
+
+Same as DENUS1, except an invalid password is provided.
+
+The password 
+\begin{itemize}
+ \item does not contain at least 1 digit
+ \item does not contain a non-alphanumeric character
+ \item does not contain an upper case letter
+ \item is not at least 8 characters long
+\end{itemize}
+
+Verify that the correct error has been printed, and that
+irrelevant password-related errors are not printed.
+
+\section*{DENUF3b - Password must be valid}
+
+Same as DENUS1, except an invalid password is provided.
+
+The password
+\begin{itemize}
+  \item does not contain at least 1 digit
+  \item does not contain a non-alphanumeric character
+  \item does not contain an upper case letter
+  \item IS at least 8 characters long
+\end{itemize}
+
+Verify that the correct error has been printed, and that
+irrelevant password-related errors are not printed.
+
+\section*{DENUF3c - Password must be valid}
+
+Same as DENUS1, except an invalid password is provided.
+
+The password
+\begin{itemize}
+  \item does not contain at least 1 digit
+  \item does not contain a non-alphanumeric character
+  \item DOES contain an upper case letter
+  \item IS at least 8 characters long
+\end{itemize}
+
+Verify that the correct error has been printed, and that
+irrelevant password-related errors are not printed.
+
+\section*{DENUF3d - Password must be valid}
+
+Same as DENUS1, except an invalid password is provided.
+
+The password
+\begin{itemize}
+  \item does not contain at least 1 digit
+  \item DOES contain a non-alphanumeric character
+  \item DOES contain an upper case letter
+  \item IS at least 8 characters long
+\end{itemize}
+
+Verify that the correct error has been printed, and that
+irrelevant password-related errors are not printed.
+
+\section*{DENUF3e - Password must be valid}
+
+Same as DENUS1, except an invalid password is provided.
+
+The password
+\begin{itemize}
+  \item DOES contain at least 1 digit
+  \item does not contain a non-alphanumeric character
+  \item DOES contain an upper case letter
+  \item IS at least 8 characters long
+\end{itemize}
+
+Verify that the correct error has been printed, and that
+irrelevant password-related errors are not printed.
+
+\section*{DENUF3f - Password must be valid}
+
+Same as DENUS1, except an invalid password is provided.
+
+The password
+\begin{itemize}
+  \item DOES contain at least 1 digit
+  \item DOES contain a non-alphanumeric character
+  \item DOES contain an upper case letter
+  \item is not at least 8 characters long
+\end{itemize}
+
+Verify that the correct error has been printed, and that
+irrelevant password-related errors are not printed.
+
+\section*{DENUF4 - Email must be valid}
+
+Same as DENUS1, except an invalid email is provided.
+Verify that the correct error has been printed.
+
+\section*{DENUF5 - Username must not be missing}
+
+Same as DENUS1, except no username is provided.
+Verify that the correct error has been printed.
+
+\section*{DENUF6 - Password must not be missing}
+
+Same as DENUS1, except no password is provided.
+Verify that the correct error has been printed.
+
+\section*{DENUF7 - Firstname must not be missing}
+
+Same as DENUS1, except no firstname is provided.
+Verify that the correct error has been printed.
+
+\section*{DENUF8 - Surname must not be missing}
+
+Same as DENUS1, except no surname is provided.
+Verify that the correct error has been printed.
+
+\section*{DENUF9 - Email must not be missing}
+
+Same as DENUS1, except no email is provided.
+Verify that the correct error has been printed.
+
+\section*{DENUF10 - City must not be missing}
+
+Same as DENUS1, except no city is provided.
+Verify that the correct error has been printed.
+
+\section*{DENUF11 - Country must not be missing}
+
+Same as DENUS1, except no country is selected.
+Verify that the correct error has been printed.
+
+% DEEU
+%Data entry edit user
+% S=success
+% S=fail
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% TEST EDIT USER PAGE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{DEEUF1 - Password must be valid}
 
 \subsection*{Prerequisites}
 
 \begin{itemize}
-  \item Logged in as the main administrator
+  \item Logged in as an admin
   \item Currently at the Moodle home page
 \end{itemize}
-
-\subsection*{Test Data}
-
-\begin{itemize}
-  \item Valid username
-  \item Valid newpassword
-  \item Valid firstname
-  \item Valid email
-  \item Valid city
-  \item Valid country
-\end{itemize}
-
-\subsection*{Steps to carry out the test}
-
-\begin{itemize}
-  \item Click the button ``Add a new user'' under the User and then
-    the Account categories.
-  \item Fill form with the minimum amount of data: username, newpassword,
-    firstname, email, city and country.
-  \item Click Create User button.
-\end{itemize}
-
-\section{Create User missing surname}
-
-% lowercase username
-
-\section*{DE2 - Username must be lowercase}
-
-\subsection*{Prerequisites}
-
-As DE1.
 
 \subsection*{Test Data}
 
 \begin{itemize}
   \item Invalid username
-  \item Valid newpassword
-  \item Valid firstname
-  \item Valid email
-  \item Valid city
-  \item Valid country
 \end{itemize}
 
 \subsection*{Steps to carry out the test}
 
-As DE1, but also verify that an appropriate error message
-was displayed about lowercase usernames.
+\begin{itemize}
+  \item Navigate to Edit Profile
+  \item Enter an invalid user name
+  \item Verify an appropriate error message was displayed
+\end{itemize}
 
+
+\section*{DEEUF6 - Email must be valid}
+
+Same as DEEUF1, except an invalid email is provided.
+Verify that the correct error has been printed.
+
+
+\section*{DEEUF7 - Username must not be missing}
+
+Same as DEEUF1, except no username is provided.
+Verify that the correct error has been printed.
+
+\section*{DEEUF8 - Password must not be missing}
+
+Same as DEEUF1, except no password is provided.
+Verify that the correct error has been printed.
+
+\section*{DEEUF9 - Firstname must not be missing}
+
+Same as DEEUF1, except no firstname is provided.
+Verify that the correct error has been printed.
+
+\section*{DEEUF10 - Surname must not be missing}
+
+Same as DEEUF1, except no surname is provided.
+Verify that the correct error has been printed.
+
+\section*{DEEUF11 - Email must not be missing}
+
+Same as DEEUF1, except no email is provided.
+Verify that the correct error has been printed.
+
+\section*{DEEUF12 - City must not be missing}
+
+Same as DEEUF1, except no city is provided.
+Verify that the correct error has been printed.
+
+\section*{DEEUF13 - Country must not be missing}
+
+Same as DEEUF1, except no country is provided.
+Verify that the correct error has been printed.
+
+\section*{DEEUS14 - Username can be updated}
+
+\subsection*{Prerequisites}
+
+\begin{itemize}
+  \item Logged in as a regular user
+  \item Currently at the Moodle home page
+\end{itemize}
+
+\subsection*{Test Data}
+
+\begin{itemize}
+  \item Valid username
+\end{itemize}
+
+\subsection*{Steps to carry out the test}
+
+\begin{itemize}
+  \item Navigate to Edit Profile
+  \item Enter a valid user name
+  \item Log out
+  \item Log in with new user name and old password
+  \item Verify login was successful
+\end{itemize}
+
+\section*{DEEUS16 - Password can be updated}
+
+\subsection*{Prerequisites}
+
+\begin{itemize}
+  \item Logged in as a regular user
+  \item Currently at the Moodle home page
+\end{itemize}
+
+\subsection*{Test Data}
+
+\begin{itemize}
+  \item Valid password
+\end{itemize}
+
+\subsection*{Steps to carry out the test}
+
+\begin{itemize}
+  \item Navigate to Edit Profile
+  \item Enter a valid password
+  \item Log out
+  \item Log in with old user name and new password
+  \item Verify login was successful
+\end{itemize}
+
+\section*{DEEUS17 - Firstname can be updated}
+
+\subsection*{Prerequisites}
+
+\begin{itemize}
+  \item Logged in as a regular user
+  \item Currently at the Moodle home page
+\end{itemize}
+
+\subsection*{Test Data}
+
+\begin{itemize}
+  \item Valid firstname
+\end{itemize}
+
+\subsection*{Steps to carry out the test}
+
+\begin{itemize}
+  \item Navigate to Edit Profile
+  \item Enter a valid firstname
+  \item Verify that firstname appears correctly on user profile page
+\end{itemize}
+
+\section*{DEEUS18 - Surname can be updated}
+
+Same as DEEUS17, except enter a valid surname and verify it was updated correctly.
+
+\section*{DEEUS19 - Email can be updated}
+
+Same as DEEUS17, except enter a valid email and verify it was updated correctly.
+
+\section*{DEEUS20 - City can be updated}
+
+Same as DEEUS17, except enter a valid city and verify it was updated correctly.
+
+\section*{DEEUS21 - Country can be updated}
+
+Same as DEEUS17, except enter a valid country and verify it was updated correctly.
+
+%% LOGIN
+%\section{Created User can be used to log in}
+%
+%\subsection*{Prerequisites}
+%
+%\begin{itemize}
+%  \item Logged in as the main administrator
+%  \item Currently at the Moodle home page
+%\end{itemize}
+%
+%\subsection*{Test Data}
+%
+%\begin{itemize}
+%  \item Valid username
+%  \item Valid newpassword
+%  \item Valid firstname
+%  \item Valid email
+%  \item Valid city
+%  \item Valid country
+%\end{itemize}
+%
+%\subsection*{Steps to carry out the test}
+%
+%\begin{itemize}
+%  \item Click the button ``Add a new user'' under the User and then
+%    the Account categories.
+%  \item Fill form with the minimum amount of data: username, newpassword,
+%    firstname, email, city and country.
+%  \item Click Create User button.
+%\end{itemize}
+%
+%
 \end{document}

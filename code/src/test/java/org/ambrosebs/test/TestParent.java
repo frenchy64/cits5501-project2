@@ -1,7 +1,7 @@
 package org.ambrosebs.test;
 
 import clojure.lang.Symbol;
-import org.ambrosebs.test.util.AddNewUser;
+import org.ambrosebs.test.util.AddOrEditUser;
 import org.ambrosebs.test.util.DriverOps;
 import org.ambrosebs.test.util.Nav;
 import org.ambrosebs.test.util.User;
@@ -11,7 +11,7 @@ import org.openqa.selenium.WebDriver;
 
 import clojure.lang.Var;
 import mikera.cljutils.Clojure;
-import org.ambrosebs.test.util.AssertionsNewUser;
+import org.ambrosebs.test.util.AssertionsNewOrEditUser;
 
 /**
  * This class creates a driver and points it at the moodle homepage.
@@ -43,12 +43,13 @@ public class TestParent {
     
     // END CLOJURE BOILERPLATE
 
-    static WebDriver driver;
+    public static WebDriver driver;
     
-    final AddNewUser addNewUser = new AddNewUser(driver);    
-    final User user = new User(driver);
-    final Nav nav = new Nav(driver);
-    final AssertionsNewUser assertsUser = new AssertionsNewUser(driver);
+    // These are public so then subclasses can live in another package
+    public final AddOrEditUser addNewUser = new AddOrEditUser(driver);    
+    public final User user = new User(driver);
+    public final Nav nav = new Nav(driver);
+    public final AssertionsNewOrEditUser assertsUser = new AssertionsNewOrEditUser(driver);
     
     @BeforeClass
     public static void setupDriver() {

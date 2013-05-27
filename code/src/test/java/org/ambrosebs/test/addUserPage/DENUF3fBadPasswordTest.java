@@ -1,31 +1,36 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package org.ambrosebs.test;
+package org.ambrosebs.test.addUserPage;
 
-import clojure.lang.IPersistentSet;
 import org.ambrosebs.test.data.AddUserData;
 import org.junit.Test;
 
 import clojure.lang.RT;
 
-import org.ambrosebs.test.util.AssertionsNewUser;
+import org.ambrosebs.test.TestParent;
 
 /**
- *
+ * Make a user with an invalid password that:
+ *  - DOES contain at least 1 digit
+ *  - DOES contain a non-alphanumeric character
+ *  - DOES contain an upper case letter
+ *  - is not at least 8 characters long
+ * 
  * @author ambrose
  */
-public class DE3BadPasswordTest extends TestParent {
+public class DENUF3fBadPasswordTest extends TestParent {
     
     /**
      * The set of error messages we expect here.
      */
     final Object validErrors =
-            RT.set(AddUserData.badPwError1Digit,
-                    AddUserData.badPwError1NonAlpha,
+            RT.set(AddUserData.badPwError8long);
+    
+    /**
+     * We don't want to see these errrors.
+     */
+    final Object invalidErrors =
+            RT.set(AddUserData.badPwError1NonAlpha,
                     AddUserData.badPwError1Upper,
-                    AddUserData.badPwError8long);
+                    AddUserData.badPwError1Digit);
 
     @Test
     public void login() {
@@ -36,11 +41,11 @@ public class DE3BadPasswordTest extends TestParent {
      * Add a new user and verify it shows in the user page.
      */
     @Test
-    public void addUserBadPassword() {
+    public void addUserWithBadPassword() {
         nav.navigateTreeMenuToAddNewUserPage();
         
         addNewUser.enterUserName(AddUserData.badUser3Username);
-        addNewUser.enterPw(AddUserData.badUser3Pw);
+        addNewUser.enterPw("Ca#1");
         addNewUser.enterFirstname(AddUserData.badUser3Firstname);
         addNewUser.enterSurname(AddUserData.badUser3Surname);
         addNewUser.enterEmail(AddUserData.badUser3Email);
@@ -49,7 +54,7 @@ public class DE3BadPasswordTest extends TestParent {
         addNewUser.clickSubmitButton();
         
         assertsUser.assertAllErrorsAppear(validErrors);
-
+        assertsUser.assertNoErrorsAppear(invalidErrors);
     }
     
 }

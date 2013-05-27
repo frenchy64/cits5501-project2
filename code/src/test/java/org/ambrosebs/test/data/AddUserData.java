@@ -16,6 +16,9 @@ public class AddUserData {
     public static final String user1Email = "bobo@martin.org";
     public static final String user1City = "Perth";
     public static final String user1Country = "Australia";
+    
+    // used in DE4
+    public static final String user1AlternativeFirstname = "Molly";
 
     public static final String badUser2Username = "Foobar";
     public static final String badUser2Pw = "Moodle123$";
@@ -26,12 +29,16 @@ public class AddUserData {
     public static final String badUser2Country = "Australia";
 
     public static final String badUser3Username = "goodname";
-    public static final String badUser3Pw = "badpw";
+    public static final String badUser3Pw = "Moodle123$";
     public static final String badUser3Firstname = "Third";
     public static final String badUser3Surname = "Dude";
     public static final String badUser3Email = "dude@martin.org";
     public static final String badUser3City = "Perth";
     public static final String badUser3Country = "Australia";
+    
+    
+    public static final String badPw = "afsf";
+    public static final String badEmail = "##";
     
     
     /** 
@@ -48,4 +55,10 @@ public class AddUserData {
     public static final String badPwError1NonAlpha = 
       "Passwords must have at least 1 non-alphanumeric character(s).";
     
+    public static final String badEmailError = "Invalid email address";
+    
+    public static final String missingFieldError = "Required";
+    
+    //Change pw errors
+    public static final String changePwNoMatchMsg = "These passwords do not match";
 }

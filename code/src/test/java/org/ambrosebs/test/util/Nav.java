@@ -1,8 +1,8 @@
 package org.ambrosebs.test.util;
 
-import org.ambrosebs.test.data.Data;
 import org.openqa.selenium.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
+import org.ambrosebs.test.data.Data;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,11 +13,28 @@ import org.openqa.selenium.WebElement;
  * @author ambrose
  */
 public class Nav {
-    
+
     final WebDriver driver;
-    
+
     public Nav(WebDriver driver) {
         this.driver = driver;
+    }
+
+    /**
+     * Click on the Edit profile link.
+     */
+    public void navigateTreeMenuToEditProfile() {
+        navigateTree2DeepByXpath(".//span[contains(.,'" + Data.treeProfileSettings + "')]", 
+                ".//a[text()[contains(., '" + Data.treeEditProfile + "')]]");
+    }
+    
+    /**
+     * Click on the Change password link.
+     */
+    public void navigateTreeToChangePassword() {
+        navigateTree2DeepByXpath(".//span[contains(.,'" + Data.treeProfileSettings + "')]", 
+        ".//a[text()[contains(., '" + Data.treeChangePassword + "')]]");
+
     }
 
     /**
@@ -38,7 +55,7 @@ public class Nav {
     }
 
     /**
-     * NOTE: Copied/adapted from 'functional-test-suite'
+     * NOTE: The rest of the file copied/adapted from 'functional-test-suite'
      */
     /**
      * Intelligently navigates to a tree menu to an item that is 4 levels deep e.g. "Add a new user". 
@@ -57,8 +74,6 @@ public class Nav {
             itemVisible = e.isDisplayed();
         } catch (NoSuchElementException ex) {
         }
-        System.out.println("visible?"+ itemVisible);
-        System.out.flush();
         if (itemVisible) {
             WebElement level4Element = driver.findElement(By.xpath(level4));
             level4Element.click();
@@ -74,5 +89,59 @@ public class Nav {
             level4Element.click();
             driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         }
+    }
+
+    /**
+     * Intelligently navigates to a tree menu to an item that is 2 levels deep. 
+     * @param level1 The Xpath locator for the top level parent node in the tree.
+     * @param level2 The Xpath locator for the second level parent node in the tree.
+     */
+    public void navigateTree2DeepByXpath(String level1, String level2) {
+        boolean itemVisible = false;
+        try {
+            driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+            WebElement e = driver.findElement(By.xpath(level2));
+            itemVisible = e.isDisplayed();
+        } catch (NoSuchElementException ex) {
+        }
+        if (itemVisible) {
+            WebElement level2Element = driver.findElement(By.xpath(level2));
+            level2Element.click();
+            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        } else {
+            WebElement level1Element = driver.findElement(By.xpath(level1));
+            level1Element.click();
+            WebElement level2Element = driver.findElement(By.xpath(level2));
+            level2Element.click();
+            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        }
+    }
+
+    /**
+     * Intelligently navigates to a tree menu to an item that is 3 levels deep. 
+     * @param level1 The Xpath locator for the top level parent node in the tree.
+     * @param level2 The Xpath locator for the second level parent node in the tree.
+     * @param level3 The Xpath locator for the third level parent node in the tree.
+     */
+    public void navigateTree3DeepByXpath(String level1, String level2, String level3) {
+        boolean itemVisible = false;
+        try {
+            driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+            WebElement e = driver.findElement(By.xpath(level3));
+            itemVisible = e.isDisplayed();
+        } catch (NoSuchElementException ex) {
+        }
+        if (itemVisible) {
+            WebElement level3Element = driver.findElement(By.xpath(level3));
+            level3Element.click();
+        } else {
+            WebElement level1Element = driver.findElement(By.xpath(level1));
+            level1Element.click();
+            WebElement level2Element = driver.findElement(By.xpath(level2));
+            level2Element.click();
+            WebElement level3Element = driver.findElement(By.xpath(level3));
+            level3Element.click();
+        }
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 }

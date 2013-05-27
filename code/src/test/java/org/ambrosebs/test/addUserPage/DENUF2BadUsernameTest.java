@@ -2,18 +2,30 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.ambrosebs.test;
+package org.ambrosebs.test.addUserPage;
 
+import clojure.lang.RT;
+import org.ambrosebs.test.TestParent;
 import org.ambrosebs.test.data.AddUserData;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 /**
  * 
  * @author ambrose
  */
-public class DE2BadUsernameTest extends TestParent {
+public class DENUF2BadUsernameTest extends TestParent {
+    
+    /**
+     * These errors are required
+     */
+    final Object validErrors =
+        RT.set(AddUserData.badUsernameError);
+    
+    /**
+     * These errors cannot occur.
+     */
+    final Object forbiddenErrors =
+            RT.set(AddUserData.missingFieldError);
     
     @Test
     public void login() {
@@ -36,9 +48,8 @@ public class DE2BadUsernameTest extends TestParent {
         addNewUser.enterCountry(AddUserData.badUser2Country);
         addNewUser.clickSubmitButton();
         
-        final WebElement error = driver.findElement(By.className("error"));
-        
-        assert(AddUserData.badUsernameError.equals(error.getText()));
+        assertsUser.assertAllErrorsAppear(validErrors);
+        assertsUser.assertNoErrorsAppear(forbiddenErrors);
     }
     
 }
