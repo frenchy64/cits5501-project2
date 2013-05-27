@@ -2,9 +2,120 @@
 
 \title{Part 3 - Seeded Faults}
 
+\usepackage{listings}
+\lstset{language=Java, basicstyle=\ttfamily, breaklines=true}
+
+
 \author{Ambrose Bonnaire-Sergeant (20350292)}
 
 \begin{document}
 
 \maketitle
+
+\section{Description of Seeded Faults}
+
+The seeded faults concentrated on testing the tests concerning
+input validation. These tests provided some invalid input
+and then checked that certain errors were present or absent from the page.
+
+I seeded faults by changing the content of some error messages.
+
+\section{Catching faults}
+
+My tests performed well in catching these trivial faults. They provided
+detailed error messages and could potentially be used to pinpoint the source
+of an error.
+
+\section{Deficiencies in the tests}
+
+Seeding simple faults based on error message content highlighted a certain
+brittleness to my tests. For example, if the error messages legitimately changed,
+they would also have to be changed in the test. Perhaps, the tests could be
+improved by sourcing the error messages directly to the PHP code that declares them.
+
+\section{Seeded faults}
+
+The seeded faults are simply erroneous words in the error messages.
+
+\begin{verbatim}
+diff --git a/lang/en/admin.php b/lang/en/admin.php
+index b1c5126..bf4bd80 100644
+--- a/lang/en/admin.php
++++ b/lang/en/admin.php
+@@ -249,7 +249,7 @@ $string['configloginhttps'] = 'Turning this on will make Moodle use a secure htt
+ $string['configloglifetime'] = 'This specifies the length of time you want to keep logs about user activity.  Logs that are older than this age are automatically deleted.  It is best to keep logs as long as possible, in case you need them, but if you have a very busy server and are experiencing performance problems, then you may want to lower the log lifetime. Values lower than 30 are not recommended because statistics may not work properly.';
+ $string['configlookahead'] = 'Days to look ahead';
+ $string['configmaxbytes'] = 'This specifies a maximum size that uploaded files can be throughout the whole site. This setting is limited by the PHP settings post_max_size and upload_max_filesize, as well as the Apache setting LimitRequestBody. In turn, maxbytes limits the range of sizes that can be chosen at course level or module level. If \'Server Limit\' is chosen, the server maximum allowed by the server will be used.';
+-$string['configmaxconsecutiveidentchars'] = 'Passwords must not have more than this number of consecutive identical characters. Use 0 to disable this check.';
++$string['configmaxconsecutiveidentchars'] = 'Passwords foo bar must not have more than this number of consecutive identical characters. Use 0 to disable this check.';
+ $string['configmaxeditingtime'] = 'This specifies the amount of time people have to re-edit forum postings, glossary comments etc.  Usually 30 minutes is a good value.';
+ $string['configmaxevents'] = 'Events to Lookahead';
+ $string['configmessaging'] = 'Should the messaging system between site users be enabled?';
+@@ -258,7 +258,7 @@ $string['configmessaginghidereadnotifications'] = 'Hide read notifications of ev
+ $string['configmessagingdeletereadnotificationsdelay'] = 'Read notifications can be deleted to save space. How long after a notification is read can it be deleted?';
+ $string['configminpassworddigits'] = 'Passwords must have at least these many digits.';
+ $string['configminpasswordlength'] = 'Passwords must be at least these many characters long.';
+-$string['configminpasswordlower'] = 'Passwords must have at least these many lower case letters.';
++$string['configminpasswordlower'] = 'Passwords foo bar must have at least these many lower case letters.';
+ $string['configminpasswordnonalphanum'] = 'Passwords must have at least these many non-alphanumeric characters.';
+ $string['configminpasswordupper'] = 'Passwords must have at least these many upper case letters.';
+ $string['configmobilecssurl'] = 'A CSS file to customise your mobile app interface.';
+diff --git a/lang/en/auth.php b/lang/en/auth.php
+index 9e14d1d..21e3a23 100644
+--- a/lang/en/auth.php
++++ b/lang/en/auth.php
+@@ -73,9 +73,9 @@ $string['emailupdatesuccess'] = 'Email address of user <em>{$a->fullname}</em> w
+ $string['emailupdatetitle'] = 'Confirmation of email update at {$a->site}';
+ $string['enterthenumbersyouhear'] = 'Enter the numbers you hear';
+ $string['enterthewordsabove'] = 'Enter the words above';
+-$string['errormaxconsecutiveidentchars'] = 'Passwords must have at most {$a} consecutive identical characters.';
++$string['errormaxconsecutiveidentchars'] = 'Passwords foo bar must have at most {$a} consecutive identical characters.';
+ $string['errorminpassworddigits'] = 'Passwords must have at least {$a} digit(s).';
+-$string['errorminpasswordlength'] = 'Passwords must be at least {$a} characters long.';
++$string['errorminpasswordlength'] = 'Passwords foo bar must be at least {$a} characters long.';
+ $string['errorminpasswordlower'] = 'Passwords must have at least {$a} lower case letter(s).';
+ $string['errorminpasswordnonalphanum'] = 'Passwords must have at least {$a} non-alphanumeric character(s).';
+ $string['errorminpasswordupper'] = 'Passwords must have at least {$a} upper case letter(s).';
+diff --git a/lang/en/moodle.php b/lang/en/moodle.php
+index 7ec794c..fd351f4 100644
+--- a/lang/en/moodle.php
++++ b/lang/en/moodle.php
+@@ -1748,7 +1748,7 @@ $string['userlist'] = 'User list';
+ $string['username'] = 'Username';
+ $string['usernameemailmatch'] = 'The username and email address do not relate to the same user';
+ $string['usernameexists'] = 'This username already exists, choose another';
+-$string['usernamelowercase'] = 'Only lowercase letters allowed';
++$string['usernamelowercase'] = 'Only lowercase letters are not allowed';
+ $string['usernamenotfound'] = 'The username was not found in the database';
+ $string['usernameoremail'] = 'Enter either username or email address';
+ $string['usernotconfirmed'] = 'Could not confirm {$a}';
+\end{verbatim}
+
+\section{Test Output}
+
+The test output appeared to have caught these changes.
+The error messages are useful, but it could be made more useful if the seeded validation error messages
+were also displayed.
+
+\begin{lstlisting}[caption=An excerpt from the test report after seeded faults]
+...
+Results :
+
+Failed tests: 
+  addUserWithBadPassword(org.ambrosebs.test.addUserPage.DENUF3gBadPasswordTest): Assert failed: These messages did not appear: #{"Passwords must be at least 8 characters long."}
+(empty? missing-msgs)
+  addUserWithBadUsername(org.ambrosebs.test.addUserPage.DENUF2BadUsernameTest): Assert failed: These messages did not appear: #{"Only lowercase letters allowed"}
+(empty? missing-msgs)
+  addUserWithBadPassword(org.ambrosebs.test.addUserPage.DENUF3fBadPasswordTest): Assert failed: These messages did not appear: #{"Passwords must be at least 8 characters long."}
+(empty? missing-msgs)
+  addUserWithBadPassword(org.ambrosebs.test.addUserPage.DENUF3aBadPasswordTest): Assert failed: These messages did not appear: #{"Passwords must be at least 8 characters long."}
+(empty? missing-msgs)
+
+Tests run: 38, Failures: 4, Errors: 0, Skipped: 0
+...
+\end{lstlisting}
+
+
+
+
 \end{document}

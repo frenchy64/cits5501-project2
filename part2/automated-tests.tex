@@ -11,86 +11,130 @@
 \maketitle
 \tableofcontents
 
-\section{Automated Test Case Listings}
+\section{Choosing Good Automation Candidates}
 
-\lstinputlisting[caption=DENUS1AddUserTest.java]{addUserPage/DENUS1AddUserTest.java}
-\newpage
+I automated a subset of my manually generated test cases.
+Choosing the best candidates for automation was based on:
 
-\lstinputlisting[caption=DENUF2BadUsernameTest.java]{addUserPage/DENUF2BadUsernameTest.java}
-\newpage
+\begin{description}
+  \item [Ease of implementation]
+    Some tests required navigating a link tree, which required more work
+    to encode with XPath. I preferred test cases that centred on simple
+    data entry like filling forms and pressing submission buttons.
+  \item [Ease of seeding faults]
+    I preferred tests that allowed faults to be seeded easily. For example,
+    I chose tests that tested the presence/absence of error messages.
+    These could be easily changed in the Moodle source.
+\end{description}
 
-\lstinputlisting[caption=DENUF3aBadPasswordTest.java]{addUserPage/DENUF3aBadPasswordTest.java}
-\newpage
+\section{Automated Test Cases}
 
-\lstinputlisting[caption=DENUF3bBadPasswordTest.java]{addUserPage/DENUF3bBadPasswordTest.java}
-\newpage
+These cases were implemented. Please refer to the Part 1 deliverable for details
+on the individual test cases.
 
-\lstinputlisting[caption=DENUF3cBadPasswordTest.java]{addUserPage/DENUF3cBadPasswordTest.java}
-\newpage
+\begin{itemize}
+\item DENUS1
+\item DENUF2
+\item DENUF3a
+\item DENUF3b
+\item DENUF3c
+\item DENUF3d
+\item DENUF3e
+\item DENUF3f
+\item DENUF3g
+\item DENUF4
+\item DENUF5
+\item DENUF6
+\item DENUF7
+\item DENUF8
+\item DENUF9
+\item DENUF10
+\item DENUF11
+\item DEEUF1
+\item DEEUF2
+\end{itemize}
 
-\lstinputlisting[caption=DENUF3dBadPasswordTest.java]{addUserPage/DENUF3dBadPasswordTest.java}
-\newpage
 
-\lstinputlisting[caption=DENUF3eBadPasswordTest.java]{addUserPage/DENUF3eBadPasswordTest.java}
-\newpage
-
-\lstinputlisting[caption=DENUF3fBadPasswordTest.java]{addUserPage/DENUF3fBadPasswordTest.java}
-\newpage
-
-\lstinputlisting[caption=DENUF3gBadPasswordTest.java]{addUserPage/DENUF3gBadPasswordTest.java}
-\newpage
-
-\lstinputlisting[caption=DENUF4BadEmailTest.java]{addUserPage/DENUF4BadEmailTest.java}
-\newpage
-
-\lstinputlisting[caption=DENUF5MissingUsernameTest.java]{addUserPage/DENUF5MissingUsernameTest.java}
-\newpage
-
-\lstinputlisting[caption=DENUF6MissingPasswordTest.java]{addUserPage/DENUF6MissingPasswordTest.java}
-\newpage
-
-\lstinputlisting[caption=DENUF7MissingFirstnameTest.java]{addUserPage/DENUF7MissingFirstnameTest.java}
-\newpage
-
-\lstinputlisting[caption=DENUF8MissingSurnameTest.java]{addUserPage/DENUF8MissingSurnameTest.java}
-\newpage
-
-\lstinputlisting[caption=DENUF9MissingEmailTest.java]{addUserPage/DENUF9MissingEmailTest.java}
-\newpage
-
-\lstinputlisting[caption=DENUF10MissingCityTest.java]{addUserPage/DENUF10MissingCityTest.java}
-\newpage
-
-\lstinputlisting[caption=DENUF11MissingCountryTest.java]{addUserPage/DENUF11MissingCountryTest.java}
-\newpage
-
-\lstinputlisting[caption=DEEUF1EditBadPasswordNoMatchTest.java]{editUserPage/DEEUF1EditBadPasswordNoMatchTest.java}
-\newpage
-
-\lstinputlisting[caption=DEEUF2EditBadPasswordTest.java]{editUserPage/DEEUF2EditBadPasswordTest.java}
-\newpage
+%\lstinputlisting[caption=DENUS1AddUserTest.java]{addUserPage/DENUS1AddUserTest.java}
+%\newpage
+%
+%\lstinputlisting[caption=DENUF2BadUsernameTest.java]{addUserPage/DENUF2BadUsernameTest.java}
+%\newpage
+%
+%\lstinputlisting[caption=DENUF3aBadPasswordTest.java]{addUserPage/DENUF3aBadPasswordTest.java}
+%\newpage
+%
+%\lstinputlisting[caption=DENUF3bBadPasswordTest.java]{addUserPage/DENUF3bBadPasswordTest.java}
+%\newpage
+%
+%\lstinputlisting[caption=DENUF3cBadPasswordTest.java]{addUserPage/DENUF3cBadPasswordTest.java}
+%\newpage
+%
+%\lstinputlisting[caption=DENUF3dBadPasswordTest.java]{addUserPage/DENUF3dBadPasswordTest.java}
+%\newpage
+%
+%\lstinputlisting[caption=DENUF3eBadPasswordTest.java]{addUserPage/DENUF3eBadPasswordTest.java}
+%\newpage
+%
+%\lstinputlisting[caption=DENUF3fBadPasswordTest.java]{addUserPage/DENUF3fBadPasswordTest.java}
+%\newpage
+%
+%\lstinputlisting[caption=DENUF3gBadPasswordTest.java]{addUserPage/DENUF3gBadPasswordTest.java}
+%\newpage
+%
+%\lstinputlisting[caption=DENUF4BadEmailTest.java]{addUserPage/DENUF4BadEmailTest.java}
+%\newpage
+%
+%\lstinputlisting[caption=DENUF5MissingUsernameTest.java]{addUserPage/DENUF5MissingUsernameTest.java}
+%\newpage
+%
+%\lstinputlisting[caption=DENUF6MissingPasswordTest.java]{addUserPage/DENUF6MissingPasswordTest.java}
+%\newpage
+%
+%\lstinputlisting[caption=DENUF7MissingFirstnameTest.java]{addUserPage/DENUF7MissingFirstnameTest.java}
+%\newpage
+%
+%\lstinputlisting[caption=DENUF8MissingSurnameTest.java]{addUserPage/DENUF8MissingSurnameTest.java}
+%\newpage
+%
+%\lstinputlisting[caption=DENUF9MissingEmailTest.java]{addUserPage/DENUF9MissingEmailTest.java}
+%\newpage
+%
+%\lstinputlisting[caption=DENUF10MissingCityTest.java]{addUserPage/DENUF10MissingCityTest.java}
+%\newpage
+%
+%\lstinputlisting[caption=DENUF11MissingCountryTest.java]{addUserPage/DENUF11MissingCountryTest.java}
+%\newpage
+%
+%\lstinputlisting[caption=DEEUF1EditBadPasswordNoMatchTest.java]{editUserPage/DEEUF1EditBadPasswordNoMatchTest.java}
+%\newpage
+%
+%\lstinputlisting[caption=DEEUF2EditBadPasswordTest.java]{editUserPage/DEEUF2EditBadPasswordTest.java}
+%\newpage
 
 \section{Test Report}
 
-\lstinputlisting[]{surefire-reports/org.ambrosebs.test.addUserPage.DENUS1AddUserTest.txt}
-\lstinputlisting[]{surefire-reports/org.ambrosebs.test.addUserPage.DENUF2BadUsernameTest.txt}
-\lstinputlisting[]{surefire-reports/org.ambrosebs.test.addUserPage.DENUF3aBadPasswordTest.txt}
-\lstinputlisting[]{surefire-reports/org.ambrosebs.test.addUserPage.DENUF3bBadPasswordTest.txt}
-\lstinputlisting[]{surefire-reports/org.ambrosebs.test.addUserPage.DENUF3cBadPasswordTest.txt}
-\lstinputlisting[]{surefire-reports/org.ambrosebs.test.addUserPage.DENUF3dBadPasswordTest.txt}
-\lstinputlisting[]{surefire-reports/org.ambrosebs.test.addUserPage.DENUF3eBadPasswordTest.txt}
-\lstinputlisting[]{surefire-reports/org.ambrosebs.test.addUserPage.DENUF3fBadPasswordTest.txt}
-\lstinputlisting[]{surefire-reports/org.ambrosebs.test.addUserPage.DENUF3gBadPasswordTest.txt}
-\lstinputlisting[]{surefire-reports/org.ambrosebs.test.addUserPage.DENUF4BadEmailTest.txt}
-\lstinputlisting[]{surefire-reports/org.ambrosebs.test.addUserPage.DENUF5MissingUsernameTest.txt}
-\lstinputlisting[]{surefire-reports/org.ambrosebs.test.addUserPage.DENUF6MissingPasswordTest.txt}
-\lstinputlisting[]{surefire-reports/org.ambrosebs.test.addUserPage.DENUF7MissingFirstnameTest.txt}
-\lstinputlisting[]{surefire-reports/org.ambrosebs.test.addUserPage.DENUF8MissingSurnameTest.txt}
-\lstinputlisting[]{surefire-reports/org.ambrosebs.test.addUserPage.DENUF9MissingEmailTest.txt}
-\lstinputlisting[]{surefire-reports/org.ambrosebs.test.addUserPage.DENUF10MissingCityTest.txt}
-\lstinputlisting[]{surefire-reports/org.ambrosebs.test.addUserPage.DENUF11MissingCountryTest.txt}
-\lstinputlisting[]{surefire-reports/org.ambrosebs.test.editUserPage.DEEUF1EditBadPasswordNoMatchTest.txt}
-\lstinputlisting[]{surefire-reports/org.ambrosebs.test.editUserPage.DEEUF2EditBadPasswordTest.txt}
+All tests passed, with total duration approximately 3 minutes.
 
+%\lstinputlisting[]{surefire-reports/org.ambrosebs.test.addUserPage.DENUS1AddUserTest.txt}
+%\lstinputlisting[]{surefire-reports/org.ambrosebs.test.addUserPage.DENUF2BadUsernameTest.txt}
+%\lstinputlisting[]{surefire-reports/org.ambrosebs.test.addUserPage.DENUF3aBadPasswordTest.txt}
+%\lstinputlisting[]{surefire-reports/org.ambrosebs.test.addUserPage.DENUF3bBadPasswordTest.txt}
+%\lstinputlisting[]{surefire-reports/org.ambrosebs.test.addUserPage.DENUF3cBadPasswordTest.txt}
+%\lstinputlisting[]{surefire-reports/org.ambrosebs.test.addUserPage.DENUF3dBadPasswordTest.txt}
+%\lstinputlisting[]{surefire-reports/org.ambrosebs.test.addUserPage.DENUF3eBadPasswordTest.txt}
+%\lstinputlisting[]{surefire-reports/org.ambrosebs.test.addUserPage.DENUF3fBadPasswordTest.txt}
+%\lstinputlisting[]{surefire-reports/org.ambrosebs.test.addUserPage.DENUF3gBadPasswordTest.txt}
+%\lstinputlisting[]{surefire-reports/org.ambrosebs.test.addUserPage.DENUF4BadEmailTest.txt}
+%\lstinputlisting[]{surefire-reports/org.ambrosebs.test.addUserPage.DENUF5MissingUsernameTest.txt}
+%\lstinputlisting[]{surefire-reports/org.ambrosebs.test.addUserPage.DENUF6MissingPasswordTest.txt}
+%\lstinputlisting[]{surefire-reports/org.ambrosebs.test.addUserPage.DENUF7MissingFirstnameTest.txt}
+%\lstinputlisting[]{surefire-reports/org.ambrosebs.test.addUserPage.DENUF8MissingSurnameTest.txt}
+%\lstinputlisting[]{surefire-reports/org.ambrosebs.test.addUserPage.DENUF9MissingEmailTest.txt}
+%\lstinputlisting[]{surefire-reports/org.ambrosebs.test.addUserPage.DENUF10MissingCityTest.txt}
+%\lstinputlisting[]{surefire-reports/org.ambrosebs.test.addUserPage.DENUF11MissingCountryTest.txt}
+%\lstinputlisting[]{surefire-reports/org.ambrosebs.test.editUserPage.DEEUF1EditBadPasswordNoMatchTest.txt}
+%\lstinputlisting[]{surefire-reports/org.ambrosebs.test.editUserPage.DEEUF2EditBadPasswordTest.txt}
+%
 
 \end{document}
