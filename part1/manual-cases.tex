@@ -26,10 +26,6 @@ I have concentrated on these pages:
 
 Tests that validate data entry conditions are the main theme in this document.
 
-\section{Test Cases}
-
-\subsection{A note on test identifiers}
-
 Test identifiers are organised as follows:
 
 \begin{description}
@@ -38,7 +34,12 @@ Test identifiers are organised as follows:
 \end{description}
 
 Identifiers end with \emph{S} for success cases or \emph{F} for
-failure cases.
+failure/negative cases.
+
+I chose to concentrate on negative test cases because they are easiest
+to test. Usually an input validation error results in an error message,
+which would be simple to search for and verify using an automated
+testing tool like Selenium.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% TEST NEW USER PAGE

@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.ambrosebs.test.addUserPage;
 
 import clojure.lang.RT;
@@ -10,7 +6,7 @@ import org.ambrosebs.test.data.AddUserData;
 import org.junit.Test;
 
 /**
- *
+ * Cannot leave out password when creating user.
  * @author ambrose
  */
 public class DENUF6MissingPasswordTest extends TestParent {

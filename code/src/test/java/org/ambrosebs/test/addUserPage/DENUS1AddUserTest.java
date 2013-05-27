@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.ambrosebs.test.addUserPage;
 
 import junit.framework.Assert;
@@ -11,11 +7,10 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 
 /**
- *
+ * Can add a user with valid data.
  * @author ambrose
  */
 public class DENUS1AddUserTest extends TestParent {
-    
     
     @Test
     public void login() {

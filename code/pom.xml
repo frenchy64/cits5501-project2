@@ -72,7 +72,7 @@
       <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
         <configuration>
-          <includes>
+          <!--<includes>
             <include>org/ambrosebs/test/addUserPage/DENUS1AddUserTest.java</include>
             <include>org/ambrosebs/test/addUserPage/DENUF2BadUsernameTest.java</include>
             <include>org/ambrosebs/test/addUserPage/DENUF3aBadPasswordTest.java</include>
@@ -86,7 +86,7 @@
             <include>org/ambrosebs/test/addUserPage/DENUF9MissingEmailTest.java</include>
             <include>org/ambrosebs/test/addUserPage/DENUF10MissingCityTest.java</include>
             <include>org/ambrosebs/test/addUserPage/DENUF11MissingCountryTest.java</include>
-          </includes>
+          </includes>-->
           <additionalClasspathElements>
               <additionalClasspathElement>src/main/clojure</additionalClasspathElement>
           </additionalClasspathElements>

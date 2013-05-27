@@ -6,7 +6,7 @@ import org.ambrosebs.test.data.AddUserData;
 import org.junit.Test;
 
 /**
- *
+ * Cannot leave out country when creating user.
  * @author ambrose
  */
 public class DENUF11MissingCountryTest extends TestParent {

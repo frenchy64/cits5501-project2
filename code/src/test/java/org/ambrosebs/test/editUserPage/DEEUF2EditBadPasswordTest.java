@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.ambrosebs.test.editUserPage;
 
 import clojure.lang.RT;
@@ -32,8 +28,8 @@ public class DEEUF2EditBadPasswordTest extends TestParent {
         
         nav.navigateTreeToChangePassword();
         addNewUser.editPasswordAddOriginalPassword(AddUserData.user1Pw);
-        addNewUser.editPasswordAddNewPasswordFirstTime("invalidbutsame");
-        addNewUser.editPasswordAddNewPasswordSecondTime("invalidbutsame");
+        addNewUser.editPasswordAddNewPasswordFirstTime("invalid");
+        addNewUser.editPasswordAddNewPasswordSecondTime("invalidbutdifferent");
         addNewUser.clickSubmitButton();
         
         assertsUser.assertAllErrorsAppear(validErrors);

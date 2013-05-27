@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.ambrosebs.test.addUserPage;
 
 import clojure.lang.RT;
@@ -10,7 +6,7 @@ import org.ambrosebs.test.data.AddUserData;
 import org.junit.Test;
 
 /**
- *
+ * Cannot give bad email when creating user.
  * @author ambrose
  */
 public class DENUF4BadEmailTest extends TestParent {
@@ -19,7 +15,7 @@ public class DENUF4BadEmailTest extends TestParent {
      * The set of error messages we expect here.
      */
     final Object validErrors =
-            RT.set(AddUserData.badEmail);
+            RT.set(AddUserData.badEmailError);
     
     /**
      * These errors are not allowed.
